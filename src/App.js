@@ -1,23 +1,21 @@
 import './App.css';
+import milk from './assets/milk.jpg'
 
 function App() {
   return (
     <div className="App bg-blue-200 h-screen flex items-center justify-center">
       <header className="App-header">
-        <p className="text-2xl">
-          Edit <code>src/Home.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link text-sm font-light"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          This is the weather-app starter code for Build a Website II
-        </a>
+        <div>
+       <img src={milk} />
+        </div>
+
+       <a>Hello my name is Najmi</a>
       </header>
     </div>
   );
 }
 
 export default App;
+
+
+

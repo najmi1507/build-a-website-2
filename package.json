@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
+    "autoprefixer": "^10.1.0",
     "postcss": "^8.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "tailwindcss": "^2.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -40,8 +43,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.1.0",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.2"
+    "postcss-cli": "^8.3.1"
   }
 }
