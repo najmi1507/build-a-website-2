@@ -1,17 +1,20 @@
+import React from "react";
 import './App.css';
-import milk from './assets/milk.jpg'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Home from "./containers/Home";
 
 function App() {
   return (
-    <div className="App bg-blue-200 h-screen flex items-center justify-center">
-      <header className="App-header">
-        <div>
-       <img src={milk} />
-        </div>
+  <Router>
+    <Switch>
 
-       <a>Hello my name is Najmi</a>
-      </header>
-    </div>
+      <Route path="/">
+        <Home />
+      </Route>
+
+    </Switch>
+  </Router>
   );
 }
 
