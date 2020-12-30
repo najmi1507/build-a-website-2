@@ -8,11 +8,9 @@ function App() {
   return (
   <Router>
     <Switch>
-
       <Route path="/">
         <Home />
       </Route>
-
     </Switch>
   </Router>
   );
