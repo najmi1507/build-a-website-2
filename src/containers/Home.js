@@ -12,7 +12,7 @@ const weatherKey = `TODO`; // Your API Key here
 function Home() {
   // TODO
   return (
-    <div className="flex flex-col h-screen bg-green-200">
+    <div className="flex flex-col h-screen bg-green-200 font-serif">
       <City cityName={"Jakarta"} temp={"29°C"} color={"bg-yellow-500"} />
 
       <City cityName={"New York"} temp={"-1°C"} color={"bg-blue-500"} />
