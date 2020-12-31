@@ -43,6 +43,11 @@ function Home() {
       currentTemp: "",
       color: "text-black bg-black bg-opacity-25 pt-5 pb-5 pl-14",
     },
+    {
+      name: "Sulaymaniyah",
+      currentTemp: "",
+      color: "text-black pt-5 pb-5 pl-14",
+    },
   ]);
 
   useEffect(() => {
