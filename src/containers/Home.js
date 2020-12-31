@@ -29,15 +29,15 @@ function Home() {
       color: "text-black pt-5 pb-5 pl-14",
     },
     {
-      name: "Qatar",
+      name: "Doha",
       currentTemp: "",
       color: "text-black bg-black bg-opacity-25 pt-5 pb-5 pl-14",
     },
     {
-      name: "Dubai",
+      name: "Cirebon",
       currentTemp: "",
       color: "text-black pt-5 pb-5 pl-14",
-    },
+    }, 
     {
       name: "Kuala Lumpur",
       currentTemp: "",
@@ -51,10 +51,10 @@ function Home() {
   ]);
 
   useEffect(() => {
-    // console.log(process.env.REACT_APP_WEATHER_KEY);
+    console.log(process.env.REACT_APP_WEATHER_API_KEY);
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
       .then(function (response) {
         // Succesful request
