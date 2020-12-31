@@ -6,6 +6,8 @@ import Home from "./containers/Home";
 
 import Details from "./containers/Details";
 
+const apiDotenv = require('dotenv').config()
+
 function App() {
   return (
   <Router>

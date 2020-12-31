@@ -15,7 +15,8 @@ function Details() {
   const [city, setCity] = useState("");
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_WEATHER_API_KEY);
+    /* console.log(process.env.REACT_APP_WEATHER_API_KEY); */
+    const apiDotenv = process.env.REACT_APP_WEATHER_API_KEY
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
