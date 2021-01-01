@@ -11,11 +11,11 @@ function City({ cityName, temp, color }) {
 
   return (
     <button
-      className={"flex flex-row p-8 justify-between items-center " + color}
+      className={"p-8 border-4 border-blue-300 rounded-md " + color}
       onClick={handleClick}
     >
       <div className="text-4xl font-light">{cityName}</div>
-      <div className="text-5xl">{temp}</div>
+      <div className="flex  text-5xl">{temp}</div>
     </button>
   );
 }

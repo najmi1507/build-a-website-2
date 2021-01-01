@@ -4,10 +4,6 @@ import axios from "axios";
 import WeatherImage from "../components/WeatherImage";
 import "../App.css";
 
-// TODO
-// - implement API
-// - add props to details screen
-// - style the details screen
 
 function Details() {
   const history = useHistory();
@@ -15,8 +11,8 @@ function Details() {
   const [city, setCity] = useState("");
 
   useEffect(() => {
-    /* console.log(process.env.REACT_APP_WEATHER_API_KEY); */
-    const apiDotenv = process.env.REACT_APP_WEATHER_API_KEY
+    console.log(process.env.REACT_APP_WEATHER_API_KEY);
+    /* const apiDotenv = process.env.REACT_APP_WEATHER_API_KEY */
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
@@ -81,22 +77,24 @@ function Details() {
 
   return (
     // Container
-    <div className="flex flex-col items-center h-screen bg-pink-200">
-      <div className="pt-6 text-6xl text-black font-bold">Weather in {city}</div>
-
-      <div className="flex flex-col p-8 m-4 border-2 rounded-md border-black text-black text-2xl items-center">
-        <WeatherImage weatherType={weatherType} className="text-xl" />
-        <div>{weatherType}</div>
-        <div>Current Temperature : {currentTemp}</div>
+    <div className="flex flex-col items-center h-screen bg-yellow-100">
+      <div className="pt-6 text-6xl text-black font-bold">
+        Weather in {city}
       </div>
 
-    <div className="text-black text-xl">
-      <div>High Temperature : {highTemp}</div>
-      <div>Cloudiness : {cloudiness}</div>
-      <div>Low Temperature : {lowTemp}</div>
-      <div>Humidity : {humidity}</div>
-      <div>Wind Speed : {windSpeed}</div>
-    </div>
+      <div className="flex flex-col items-center p-8 m-4 border-2 rounded-md border-black text-black text-3xl">
+        <WeatherImage weatherType={weatherType} className="flex text-xl" />
+        <div>{weatherType}</div>
+        <div> Current Temperature : {currentTemp}</div>
+      </div>
+
+      <div className="text-black text-2xl">
+        <div>High Temperature : {highTemp}</div>
+        <div>Cloudiness : {cloudiness}</div>
+        <div>Low Temperature : {lowTemp}</div>
+        <div>Humidity : {humidity}</div>
+        <div>Wind Speed : {windSpeed}</div>
+      </div>
     </div>
   );
 }

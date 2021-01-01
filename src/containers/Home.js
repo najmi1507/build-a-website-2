@@ -15,89 +15,99 @@ function Home() {
   const [cities, setCities] = useState([
     {
       name: "Jakarta",
-      currentTemp: "",
-      color: "text-black pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center bg-yellow-100 m-8",
     },
     {
       name: "New York",
-      currentTemp: "",
-      color: "text-black bg-black bg-opacity-25 pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     },
     {
       name: "Tokyo",
-      currentTemp: "",
-      color: "text-black pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     },
     {
       name: "Doha",
-      currentTemp: "",
-      color: "text-black bg-black bg-opacity-25 pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     },
     {
-      name: "Cirebon",
-      currentTemp: "",
-      color: "text-black pt-5 pb-5 pl-14",
+      name: "Yogyakarta",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     }, 
     {
       name: "Kuala Lumpur",
-      currentTemp: "",
-      color: "text-black bg-black bg-opacity-25 pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     },
     {
       name: "Sulaymaniyah",
-      currentTemp: "",
-      color: "text-black pt-5 pb-5 pl-14",
+      currentTemp: "0",
+      weatherType: "",
+      color: "flex flex-col items-center text-black bg-yellow-100 m-8",
     },
   ]);
 
   useEffect(() => {
-    /* console.log(process.env.REACT_APP_WEATHER_API_KEY); */
-    const apiDotenv = process.env.REACT_APP_WEATHER_API_KEY
-    axios
+    updateAllWeatherData();
+  }, []);
+
+   // Fetch the weather data for 1 city
+   async function fetchWeatherData(cityName) {
+    const res = await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
       )
       .then(function (response) {
-        // Succesful request
+        // Successful request
         const weather = response.data;
-        setWeatherData(weather);
+        return weather;
       })
       .catch(function (error) {
-        // The best practice in coding is to not use console.log
+        // The best practice of coding is to not use console.log
         console.warn(error);
       });
-  }, [city]);
 
-  useEffect(() => {
-    const searchParams = history.location.search;
-    const urlParams = new URLSearchParams(searchParams);
-    const city = urlParams.get("city");
-    if (city) {
-      setCity(city);
-    }
-  }, [history]);
+    return res;
+  }
 
-  const { currentTemp } = useMemo(() => {
-    let currentTemp = "";
-    if (weatherData) {
-      currentTemp = `${Math.round(weatherData.main.temp)}°C`;
-    }
-    return {
-      currentTemp,
-    };
-  }, [weatherData]);
+  // update the list data
+  async function updateAllWeatherData(params) {
+    cities.forEach(function (citiesItems, index) {
+      let weatherData = {};
+      let newCities = [...cities];
 
-  console.log("weatherData", weatherData);
-  console.log("currentTemp", currentTemp);
+      fetchWeatherData(citiesItems.name).then((res) => {
+        weatherData = res;
+
+        newCities[index].currentTemp = weatherData.main.temp;
+        newCities[index].weatherType = weatherData.weather[0].main;
+        setCities(newCities);
+      });
+    });
+  }
+
+
 
   return (
     // Container
-    <div className="flex flex-col h-screen bg-gray-50 font-serif">
-      <div className="flex flex-col items-center pt-6 pb-5 text-6xl bg-black bg-opacity-75 text-white"> Weather App</div>
+    <div className="flex flex-col h-screen bg-green-100 font-serif">
+      <div className="flex flex-col items-center text-6xl bg-red-100 text-blue-500 p-6"> Weather App</div>
+      <span className="flex flex-wrap justify-center">
       {cities.map((item, index) => (
         <City cityName={item.name} temp={item.currentTemp} color={item.color} />
       ))}
-    </div>
+      </span>
+     </div>
   );
 }
 
